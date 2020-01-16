@@ -1,3 +1,7 @@
+stuff = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
+dragonLoot = ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']
+
+
 def displayInventory(inventory):
     total = []
     for value in inventory.values():
@@ -11,11 +15,18 @@ def displayInventory(inventory):
         print(each)
         
         
-displayInventory({'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12})
+displayInventory(stuff)
+
 
 
 def addToInventory(inventory, addedItems):
-    addedItems_dict = {}
     for each in addedItems:
-        addedItems_dict[each] = 1
+        for key, value in inventory.items():
+            if each == key:
+                inventory[key] = value + 1
+        inventory.setdefault(each, 1)
+    displayInventory(inventory)
+    
+    
+addToInventory(stuff, dragonLoot) 
     
