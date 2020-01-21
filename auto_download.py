@@ -8,8 +8,10 @@ then = time.time()
 
 
 def links():
+    print("The webpage's full address, please:")
+    url = input()
+    print('Working on it...')
     the_links = []
-    url = 'https://nakedbiblepodcast.com/episodes/'
     html_content = requests.get(url).text
     soup = BeautifulSoup(html_content, 'lxml')
     for each_link in soup.find_all('a'):
