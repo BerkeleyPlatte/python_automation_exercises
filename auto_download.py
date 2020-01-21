@@ -7,25 +7,15 @@ import random
 then = time.time()
 
 
-def urls():
-    the_urls = []
-    print('the number, please:')
-    latest = int(input()) + 1
-    for i in range(1, latest):
-        url = f'https://nakedbiblepodcast.com/page/{i}/'
-        the_urls.append(url)
-    return the_urls
-
-
 def links():
     the_links = []
-    for each in urls():
-        html_content = requests.get(each).text
-        soup = BeautifulSoup(html_content, 'lxml')
-        for each_link in soup.find_all('a'):
-            current_link = each_link.get('href')
-            if 'Transcript' in current_link:
-                the_links.append(current_link)
+    url = 'https://nakedbiblepodcast.com/episodes/'
+    html_content = requests.get(url).text
+    soup = BeautifulSoup(html_content, 'lxml')
+    for each_link in soup.find_all('a'):
+        current_link = each_link.get('href')
+        if 'Transcript' in current_link:
+            the_links.append(current_link)
     return the_links
 
 
@@ -40,7 +30,7 @@ def episode(link):
 
 
 def download():
-    print('please specifiy the filepath:')
+    print('Where do you want the PDFs to go?  Please specifiy the full filepath:')
     where_to_save = input()
     for each in links():
         num = episode(each)
