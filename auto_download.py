@@ -14,7 +14,7 @@ def links():
     soup = BeautifulSoup(html_content, 'lxml')
     for each_link in soup.find_all('a'):
         current_link = each_link.get('href')
-        if 'Transcript' in current_link:
+        if current_link.endswith('.pdf'):
             the_links.append(current_link)
     return the_links
 
@@ -23,7 +23,7 @@ def episode(link):
     candidates = re.split('/', link)
     final_candidates = []
     for each in candidates:
-        if 'Transcript' in each:
+        if each.endswith('pdf'):
             final_candidates = re.split('-', each)
             final_candidates.append(final_candidates)
     return re.findall(r'\d+', final_candidates[1])[0]
@@ -44,4 +44,4 @@ download()
 
 now = time.time()
 
-print('time elapsed (seconds):', round(now - then))
+print('It is finished.  Time elapsed (seconds):', round(now - then))
