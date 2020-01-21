@@ -9,8 +9,10 @@ then = time.time()
 
 def urls():
     the_urls = []
-    for i in range(2, 104):
-        url = f'https://nakedbiblepodcast.com/page/{i}'
+    print('the number, please:')
+    latest = int(input()) + 1
+    for i in range(1, latest):
+        url = f'https://nakedbiblepodcast.com/page/{i}/'
         the_urls.append(url)
     return the_urls
 
@@ -52,4 +54,4 @@ download()
 
 now = time.time()
 
-print('done in ', now - then, ' seconds')
+print('time elapsed (seconds):', round(now - then))
