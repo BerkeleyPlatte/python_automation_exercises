@@ -1,6 +1,6 @@
 import os, re
 
-print('What folder are we looking at?  Please specifiy full filepath:')
+print('What folder are we looking at?  Please specify full filepath:')
 
 folder_path = input()
 dirListing = os.listdir(folder_path)
